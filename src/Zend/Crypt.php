@@ -29,7 +29,6 @@ class Zend_Crypt
 {
     const TYPE_OPENSSL = 'openssl';
     const TYPE_HASH    = 'hash';
-    const TYPE_MHASH   = 'mhash';
 
     /**
      * @var string
@@ -52,27 +51,6 @@ class Zend_Crypt
         'sha512'
     );
 
-    /**
-     * @var array
-     */
-    protected static $_supportedAlgosMhash = array(
-        'adler32',
-        'crc32',
-        'crc32b',
-        'gost',
-        'haval128',
-        'haval160',
-        'haval192',
-        'haval256',
-        'md4',
-        'md5',
-        'ripemd160',
-        'sha1',
-        'sha256',
-        'tiger',
-        'tiger128',
-        'tiger160'
-    );
 
     /**
      * @param string $algorithm
@@ -105,12 +83,6 @@ class Zend_Crypt
                 return;
             }
         }
-        if (function_exists('mhash')) {
-            self::$_type = self::TYPE_MHASH;
-            if (in_array($algorithm, self::$_supportedAlgosMhash)) {
-                return;
-            }
-        }
         if (function_exists('openssl_digest')) {
             if ($algorithm == 'ripemd160') {
                 $algorithm = 'rmd160';
@@ -134,24 +106,6 @@ class Zend_Crypt
         return hash($algorithm, $data, $binaryOutput);
     }
 
-    /**
-     * @param string $algorithm
-     * @param string $data
-     * @param bool $binaryOutput
-     * @return string|false
-     */
-    protected static function _digestMhash($algorithm, $data, $binaryOutput)
-    {
-        $constant = constant('MHASH_' . strtoupper($algorithm));
-        $binary   = mhash($constant, $data);
-        if ($binary === false) {
-            throw new Zend_Crypt_Exception('There was an error hashing the data with mhash');
-        }
-        if ($binaryOutput) {
-            return $binary;
-        }
-        return bin2hex($binary);
-    }
 
     /**
      * @param string $algorithm

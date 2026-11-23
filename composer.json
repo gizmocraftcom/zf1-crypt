@@ -54,8 +54,7 @@
         "ext-openssl": "Used in various hashing/crypt algorithms",
         "ext-hash": "Used in various hashing/crypt algorithms",
         "ext-bcmath": "Used in various hashing/crypt algorithms",
-        "ext-gmp": "Used in various hashing/crypt algorithms",
-        "ext-mcrypt": "Used in various hashing/crypt algorithms"
+        "ext-gmp": "Used in various hashing/crypt algorithms"
     },
     "config": {
         "allow-plugins": {

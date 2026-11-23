@@ -25,7 +25,6 @@
  * algorithm.
  *
  * @todo  Patch for refactoring failed tests (key block sizes >80 using internal algo)
- * @todo       Check if mhash() is a required alternative (will be PECL-only soon)
  * @category   Zend
  * @package    Zend_Crypt
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
@@ -55,15 +54,6 @@ class Zend_Crypt_Hmac extends Zend_Crypt
      * @var string
      */
     protected static $_hashAlgorithm = 'md5';
-
-    /**
-     * List of algorithms supported my mhash()
-     *
-     * @var array
-     */
-    protected static $_supportedMhashAlgorithms = array('adler32',' crc32', 'crc32b', 'gost',
-            'haval128', 'haval160', 'haval192', 'haval256', 'md4', 'md5', 'ripemd160',
-            'sha1', 'sha256', 'tiger', 'tiger128', 'tiger160');
 
     /**
      * Constants representing the output mode of the hash algorithm
@@ -118,12 +108,9 @@ class Zend_Crypt_Hmac extends Zend_Crypt
             $hashSupported = true;
         }
 
-        if ($hashSupported === false && function_exists('mhash') && in_array($hash, self::$_supportedAlgosMhash)) {
-            $hashSupported = true;
-        }
 
         if ($hashSupported === false) {
-            throw new Zend_Crypt_Hmac_Exception('hash algorithm provided is not supported on this PHP installation; please enable the hash or mhash extensions');
+            throw new Zend_Crypt_Hmac_Exception('hash algorithm provided is not supported on this PHP installation; please enable the hash extension');
         }
         self::$_hashAlgorithm = $hash;
     }
@@ -134,46 +121,13 @@ class Zend_Crypt_Hmac extends Zend_Crypt
      * @param string $data
      * @param string $output
      * @param bool $internal Option to not use hash() functions for testing
-     * @return string|false
+     * @return string
      */
     protected static function _hash($data, $output = self::STRING, $internal = false)
     {
-        if (function_exists('hash_hmac')) {
-            if ($output == self::BINARY) {
-                return hash_hmac(self::$_hashAlgorithm, $data, self::$_key, true);
-            }
-            return hash_hmac(self::$_hashAlgorithm, $data, self::$_key);
+        if ($output == self::BINARY) {
+            return hash_hmac(self::$_hashAlgorithm, $data, self::$_key, true);
         }
-
-        if (function_exists('mhash')) {
-            if ($output == self::BINARY) {
-                return mhash(self::_getMhashDefinition(self::$_hashAlgorithm), $data, self::$_key);
-            }
-            $bin = mhash(self::_getMhashDefinition(self::$_hashAlgorithm), $data, self::$_key);
-            if ($bin === false) {
-                throw new Zend_Crypt_Exception('There was an error hashing the data with mhash');
-            }
-            return bin2hex($bin);
-        }
-
-        return false;
-    }
-
-    /**
-     * Since MHASH accepts an integer constant representing the hash algorithm
-     * we need to make a small detour to get the correct integer matching our
-     * algorithm's name.
-     *
-     * @param string $hashAlgorithm
-     * @return integer
-     */
-    protected static function _getMhashDefinition($hashAlgorithm)
-    {
-        $types = array();
-
-        for ($i = 0; $i <= mhash_count(); $i++) {
-            $types[mhash_get_hash_name($i)] = $i;
-        }
-        return $types[strtoupper($hashAlgorithm)];
+        return hash_hmac(self::$_hashAlgorithm, $data, self::$_key);
     }
 }

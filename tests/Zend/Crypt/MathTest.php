@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +29,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Crypt
  */
+#[Group('Zend_Crypt')]
 class Zend_Crypt_MathTest extends PHPUnit\Framework\TestCase
 {
     public function testRand()
@@ -91,9 +93,8 @@ class Zend_Crypt_MathTest extends PHPUnit\Framework\TestCase
      * A Monte Carlo test that generates $cycles numbers from 0 to $tot
      * and test if the numbers are above or below the line y=x with a
      * frequency range of [$min, $max]
-     *
-     * @dataProvider provideRandInt
      */
+    #[DataProvider('provideRandInt')]
     public function testMontecarloRandInteger($num, $valid, $cycles, $tot, $min, $max, $strong)
     {
         try {

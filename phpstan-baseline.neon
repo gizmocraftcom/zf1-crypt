@@ -1,155 +1,181 @@
 parameters:
 	ignoreErrors:
+		# reason: fread() length is validated by the callers; special-casing 0 would change the behavior of randBytes()
 		-
 			message: '#^Parameter \#2 \$length of function fread expects int\<1, max\>, int\<0, max\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#1 \$num of function bcpow expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#1 \$num of function bcsqrt expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#1 \$num1 of function bcadd expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#1 \$num1 of function bccomp expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 3
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#1 \$num1 of function bcmul expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#1 \$num1 of function bcsub expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$exponent of function bcpow expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcadd expects numeric\-string, float\|int given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcadd expects numeric\-string, int\<0, 255\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcadd expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bccomp expects numeric\-string, 0 given\.$#'
 			identifier: argument.type
 			count: 2
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bccomp expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcmul expects numeric\-string, 256 given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcmul expects numeric\-string, 65536 given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcmul expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Bcmath takes decimal strings by contract but declares plain string; numeric-string cannot be expressed without changing public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function bcsub expects numeric\-string, string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Bcmath.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Gmp docblocks declare GMP|resource|string from the PHP 5 era; narrowing them changes public signatures
 		-
 			message: '#^Parameter \#1 \$num of function gmp_strval expects GMP\|int\|string, GMP\|resource\|string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Gmp.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Gmp docblocks declare GMP|resource|string from the PHP 5 era; narrowing them changes public signatures
 		-
 			message: '#^Parameter \#1 \$num1 of function gmp_div expects GMP\|int\|string, GMP\|resource\|string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Gmp.php
 
+		# reason: Zend_Crypt_Math_BigInteger_Gmp docblocks declare GMP|resource|string from the PHP 5 era; narrowing them changes public signatures
 		-
 			message: '#^Parameter \#2 \$num2 of function gmp_div expects GMP\|int\|string, GMP\|resource\|string given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Math/BigInteger/Gmp.php
 
+		# reason: Zend_Crypt_Rsa_Key keeps the legacy resource type for the protected \$_opensslKeyResource property; retyping it to OpenSSLAsymmetricKey changes the class API for subclasses
 		-
 			message: '#^Parameter \#3 \$private_key of function openssl_sign expects array\|OpenSSLAsymmetricKey\|OpenSSLCertificate\|string, resource given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Rsa.php
 
+		# reason: Zend_Crypt_Rsa_Key keeps the legacy resource type for the protected \$_opensslKeyResource property; retyping it to OpenSSLAsymmetricKey changes the class API for subclasses
 		-
 			message: '#^Parameter \#3 \$private_key\|public_key of callable ''openssl_private…''\|''openssl_public…'' expects array\|OpenSSLAsymmetricKey\|OpenSSLCertificate\|string, resource given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Rsa.php
 
+		# reason: Zend_Crypt_Rsa_Key keeps the legacy resource type for the protected \$_opensslKeyResource property; retyping it to OpenSSLAsymmetricKey changes the class API for subclasses
 		-
 			message: '#^Parameter \#3 \$public_key of function openssl_verify expects array\|OpenSSLAsymmetricKey\|OpenSSLCertificate\|string, resource given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Rsa.php
 
+		# reason: Zend_Crypt_Rsa_Key keeps the legacy resource type for the protected \$_opensslKeyResource property; retyping it to OpenSSLAsymmetricKey changes the class API for subclasses
 		-
 			message: '#^Parameter \#3 \$public_key\|private_key of callable ''openssl_private…''\|''openssl_public…'' expects array\|OpenSSLAsymmetricKey\|OpenSSLCertificate\|string, resource given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Zend/Crypt/Rsa.php
 
+		# reason: Zend_Crypt_Rsa_Key keeps the legacy resource type for the protected \$_opensslKeyResource property; retyping it to OpenSSLAsymmetricKey changes the class API for subclasses
 		-
 			message: '#^Property Zend_Crypt_Rsa_Key\:\:\$_opensslKeyResource \(resource\) does not accept OpenSSLAsymmetricKey\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Zend/Crypt/Rsa/Key/Private.php
 
+		# reason: Zend_Crypt_Rsa_Key keeps the legacy resource type for the protected \$_opensslKeyResource property; retyping it to OpenSSLAsymmetricKey changes the class API for subclasses
 		-
 			message: '#^Property Zend_Crypt_Rsa_Key\:\:\$_opensslKeyResource \(resource\) does not accept OpenSSLAsymmetricKey\.$#'
 			identifier: assign.propertyType
